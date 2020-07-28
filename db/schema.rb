@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200728030537) do
+ActiveRecord::Schema.define(version: 20200728034203) do
 
   create_table "jerseys", force: :cascade do |t|
     t.string  "club_name"
     t.integer "number"
+    t.string  "user_id"
   end
 
   create_table "leagues", force: :cascade do |t|
     t.string "league_name"
     t.string "league_country"
+    t.string "jersey_id"
   end
 
   create_table "users", force: :cascade do |t|
