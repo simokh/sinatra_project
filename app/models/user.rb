@@ -1,4 +1,4 @@
-class User < ActiveRecord::base 
+class User < ActiveRecord::Base 
     has_many :jerseys
-    has_many :jerseys, through: :leagues
+    has_many :jerseys, through: :league
 end
