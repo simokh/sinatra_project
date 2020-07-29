@@ -1,8 +1,7 @@
 class LeagueController < ApplicationController 
 
-    get "/league" do 
-
-        erb :'league/index'
+    get '/leagues' do 
+        @leagues = League.all
+        erb :index
     end
-
 end
