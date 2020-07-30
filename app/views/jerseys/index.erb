@@ -1,0 +1,15 @@
+<h3> Welcome to My Personal Jersey Locker </h3>
+
+<nav>
+  <a href='jerseys/new'> Add New Jerseys </a>
+</nav>
+
+<ol>
+<% @jerseys.each do |jersey|%>
+<p> Club Name: <%= jersey.club_name%> |  Jersey Number: <%= jersey.number%>  </p>
+<%end%>
+</ol>
+
+
+
+

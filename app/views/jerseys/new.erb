@@ -1,0 +1,20 @@
+
+<h2>Soccer Best Chompionships</h2>
+
+<form action="/jerseys" method='post'>
+
+<label for="club_name"> Club Name: </label>
+<input type="text" name="club_name" id="club_name">
+
+<label for="number"> Number: </label>
+<input type="text" name="number" id="number">
+
+<label for="league_name"> League Name: </label>
+<select name='league_id'>
+<% @leagues.each do |league| %>
+<option value=<%= league.id %>><%= league.league_name %></option>
+<% end %>
+</select>
+
+<input type="submit" value="Goal">
+</form>

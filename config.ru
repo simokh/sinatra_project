@@ -6,6 +6,6 @@ end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
-use LeagueController
+use JerseyController
 
 run ApplicationController
