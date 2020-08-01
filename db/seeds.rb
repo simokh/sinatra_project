@@ -1,3 +1,4 @@
+League.destroy_all
 League.create(league_name: "Premier League", league_country: "England & Wales")
 League.create(league_name: "Serie A", league_country: "Italy")
 League.create(league_name: "La Liga", league_country: "Spain")

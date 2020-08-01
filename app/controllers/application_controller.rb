@@ -11,11 +11,11 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  # helpers do
+  helpers do
 
-  #   def current_user 
-  #     @user = U
-  #   end
-  # end
+    def current_user 
+      @user = User.first
+    end
+  end
 
 end

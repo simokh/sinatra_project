@@ -12,18 +12,15 @@ class JerseyController < ApplicationController
     end
 
     post '/jerseys' do 
-       jersey = User.first.jerseys.build(params)
-       jersey.club_name 
-       jersey.number
+       jersey = current_user.jerseys.build(params)
        jersey.save
-    
-       redirect '/jerseys'
+       redirect "/jerseys/#{jersey.id}"
     end
 
-    # get '/jerseys/:id' do 
-    #     @jerseys = Jerseys.all
-    #     erb :'leagues/index'
-    # end
+    get '/jerseys/:id' do 
+        @jersey = Jersey.find_by_id(params[:id])
+        erb :'jerseys/show'
+    end
 
     # post '/jerseys/show' do
     #     # @jerseys = Jersey.all 
