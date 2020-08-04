@@ -1,0 +1,14 @@
+<form action="/jerseys/<%= @jersey.id %>/edit" method="post">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+
+  
+  <label for="club_name"> Club Name: </label>
+  <input type="text" name="club_name" id="club_name" value="<%=@jersey.club_name%>">
+
+  <label for="number"> Number: </label>
+  <input type="text" name="number" id="number"  value="<%=@jersey.number%>">
+
+
+  <input type="submit" value="Substitution">
+</form>
+

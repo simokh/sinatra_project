@@ -1,14 +1,26 @@
 <h3> Welcome to My Personal Soccer Jersey Locker </h3>
 
 <nav>
+  <a href='/'> Home </a>
+</nav>
+
+<nav>
   <a href='jerseys/new'> Add New Jerseys </a>
 </nav>
 
 <ol>
 <% @jerseys.each do |jersey|%>
-<p> Club Name: <%= jersey.club_name%> |  Jersey Number: <%= jersey.number%>  </p>
+<p> Club Name: <%= jersey.club_name%> |  Jersey Number: <%= jersey.number%></p>
+
+<form action="/jerseys/<%= jersey.id %> " method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="delete">
+</form>
+
 <%end%>
 </ol>
+
+
 
 
 
