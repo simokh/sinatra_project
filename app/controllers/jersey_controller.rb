@@ -37,13 +37,11 @@ class JerseyController < ApplicationController
 
      
     patch '/jerseys/:id' do #edit action
-        params.delete(:_method)
+        binding.pry
+        # params.delete(:_method)
         @jersey = current_user.jerseys.find_by_id(params[:id])
         @jersey.update(params)
-        redirect "/jerseys"
+        redirect '/jerseys/#{jersey.id}'
+        # redirect '/jerseys'
     end
-
-    
-
-
 end

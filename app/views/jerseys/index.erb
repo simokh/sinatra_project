@@ -8,17 +8,31 @@
   <a href='jerseys/new'> Add New Jerseys </a>
 </nav>
 
-<ol>
 <% @jerseys.each do |jersey|%>
 <p> Club Name: <%= jersey.club_name%> |  Jersey Number: <%= jersey.number%></p>
 
-<form action="/jerseys/<%= jersey.id %> " method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="delete">
-</form>
+<div class="btn-group">
+  <form action="/jerseys/<%= jersey.id %> " method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="RED CARD!!!">
+    </form>
+  
+ 
+
+  <a href= "/jerseys/<%= jersey.id %>/edit"> 
+    <button> 
+      Substitution
+    </button>
+  </a> 
+</div>
 
 <%end%>
-</ol>
+
+
+
+
+
+
 
 
 
