@@ -2,21 +2,23 @@ class JerseyController < ApplicationController
 
     get '/jerseys' do 
         @jerseys = Jersey.all
-        @leagues = League.all
         erb :'jerseys/index'
     end
 
-    get '/jerseys/new' do 
+    get '/jerseys/new' do # load the new.erb form 
         @leagues = League.all
         erb :'jerseys/new'
     end
 
+    # creates ans saves the new instance jersey entered to data base 
+    
     post '/jerseys' do 
         jersey = current_user.jerseys.build(params)
         jersey.save
         redirect "/jerseys/#{jersey.id}"
      end
 
+    # the show page will display the new entry 
     get '/jerseys/:id' do 
         @jersey = current_user.jerseys.find_by_id(params[:id])
         erb :'/jerseys/show' 
