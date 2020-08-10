@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions 
-    set :sessions_secret, ENV['SESSION_SECRET'] 
+    set :session_secret, ENV['SESSION_SECRET'] 
   end
 
   get "/" do
@@ -14,12 +14,11 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-
     def current_user 
-      # @user = User.find_by_id(sessions_secret[:user_id])
-      @user = User.first
+      @user = User.find_by_id(session_secret[:user_id])
+      
     end
   end
 
 end
- 
+

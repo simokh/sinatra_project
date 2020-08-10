@@ -22,7 +22,7 @@ class UsersController < ApplicationController
             session[:user_id] = user.id
             redirect '/jerseys'
         else 
-            @errors = "Invalid User Name or Passwrod"
+            @errors= "Invalid User Name or Passwrod"
             erb :'users/login'
         end
     end
