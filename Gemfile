@@ -1,3 +1,5 @@
+
+
 source 'http://rubygems.org'
 
 gem 'sinatra'
@@ -11,5 +13,6 @@ gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
 gem 'tux'
+gem 'dotenv'
 
 

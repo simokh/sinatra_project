@@ -9,5 +9,6 @@ ActiveRecord::Base.logger = Logger.new(STDOUT)
 use Rack::MethodOverride
 
 use JerseyController
+use UsersController
 
 run ApplicationController

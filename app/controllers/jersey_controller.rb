@@ -1,7 +1,7 @@
 class JerseyController < ApplicationController 
 
     get '/jerseys' do 
-        @jerseys = Jersey.all
+        @jerseys = current_user.jerseys.all
         erb :'jerseys/index'
     end
 
@@ -13,6 +13,7 @@ class JerseyController < ApplicationController
     # creates ans saves the new instance jersey entered to data base 
     
     post '/jerseys' do 
+        
         jersey = current_user.jerseys.build(params)
         jersey.save
         redirect "/jerseys/#{jersey.id}"
@@ -25,7 +26,7 @@ class JerseyController < ApplicationController
     end
 
     delete '/jerseys/:id' do #delete action
-        # binding.pry
+        
         jersey = current_user.jerseys.find_by_id(params[:id])
         jersey.destroy
         redirect '/jerseys'
