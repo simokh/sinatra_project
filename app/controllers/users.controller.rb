@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         redirect '/jerseys'
     end
 
-    get '/login' do 
+    get '/login' do
         erb :'users/login'
     end
 
@@ -30,6 +30,11 @@ class UsersController < ApplicationController
     delete '/logout' do 
         logout!
         redirect '/'
+    end
+
+    get '/' do
+        flash[:notice] = "Hooray, Flash is working!"
+        erb :index
     end
 end
 

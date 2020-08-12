@@ -1,4 +1,6 @@
+
 require 'dotenv/load'
+
 
 ENV['SINATRA_ENV'] ||= "development"
  
