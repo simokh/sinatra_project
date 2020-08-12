@@ -1,28 +1,44 @@
 class JerseyController < ApplicationController 
 
     get '/jerseys' do 
+        if !logged_in?
+            redirect '/login'
+        else 
         @jerseys = current_user.jerseys.all
         erb :'jerseys/index'
+        end 
     end
 
-    get '/jerseys/new' do # load the new.erb form 
+    get '/jerseys/new' do # load the new.erb form
+        if !logged_in?
+            redirect '/login'
+        else 
         @leagues = League.all
         erb :'jerseys/new'
+        end 
     end
 
     # creates ans saves the new instance jersey entered to data base 
     
     post '/jerseys' do 
         
+        if params[:club_name].empty? || params[:number].empty?
+            redirect '/jerseys/new'
+        else 
         jersey = current_user.jerseys.build(params)
         jersey.save
         redirect "/jerseys/#{jersey.id}"
+        end 
      end
 
     # the show page will display the new entry 
-    get '/jerseys/:id' do 
+    get '/jerseys/:id' do
+        if !logged_in?
+            redirect '/login'
+        else 
         @jersey = current_user.jerseys.find_by_id(params[:id])
         erb :'/jerseys/show' 
+        end 
     end
 
     delete '/jerseys/:id' do #delete action
@@ -34,8 +50,12 @@ class JerseyController < ApplicationController
 
     
     get '/jerseys/:id/edit' do  #load edit form
+        if !logged_in?
+            redirect '/login'
+        else 
         @jersey = current_user.jerseys.find_by_id(params[:id])
         erb :'jerseys/edit'
+        end 
     end
 
      

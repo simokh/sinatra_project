@@ -15,8 +15,20 @@ class ApplicationController < Sinatra::Base
 
   helpers do
     def current_user 
-      @user = User.find_by_id(session_secret[:user_id])
-      
+      @user = User.find_by_id(session[:user_id])
+    end
+
+    def welcome 
+      @user = User.find_by_id(session[:user_name])
+      puts "Welcome #{@user}"
+    end
+
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def logout!
+      session.clear
     end
   end
 

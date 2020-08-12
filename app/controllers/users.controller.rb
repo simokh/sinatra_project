@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     end
 
     delete '/logout' do 
-        session.destroy 
+        logout!
         redirect '/'
     end
 end
