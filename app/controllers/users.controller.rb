@@ -6,9 +6,17 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
+        if params[:user_name] == "" || params[:password] == "" || params[:email] == "" || params[:confirm_password] == ""
+            redirect to '/signup'
+        else 
         user = User.create(params) 
         session[:user_id] = user.id 
         redirect '/jerseys'
+        end 
+    end
+
+    get '/signup' do 
+        erb :'users/signup'
     end
 
     get '/login' do
@@ -30,11 +38,6 @@ class UsersController < ApplicationController
     delete '/logout' do 
         logout!
         redirect '/'
-    end
-
-    get '/' do
-        flash[:notice] = "Hooray, Flash is working!"
-        erb :index
     end
 end
 

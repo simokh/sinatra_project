@@ -5,12 +5,10 @@
 <form action="/jerseys" method='post'>
 
 <label for="club_name"> Club Name: </label>
-<input type="text" name="club_name" id="club_name">
+<input type="text" name="club_name" id="club_name" value= "" required>
 
 <label for="number"> Number: </label>
-<input type="text" name="number" id="number">
-
-<%# <input type="number" name="number" id=""> %>
+<input type="number" id="number" name="number" min="1" max="99" required>
 
 <label for="league_name"> League Name: </label>
 <select name='league_id'>

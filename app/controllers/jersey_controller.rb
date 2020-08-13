@@ -1,6 +1,6 @@
 class JerseyController < ApplicationController 
-
-    get '/jerseys' do 
+    enable :sessions
+    get '/jerseys' do
         if !logged_in?
             redirect '/login'
         else 
@@ -18,7 +18,7 @@ class JerseyController < ApplicationController
         end 
     end
 
-    # creates ans saves the new instance jersey entered to data base 
+    # creates and saves the new instance jersey entered to data base 
     
     post '/jerseys' do 
         

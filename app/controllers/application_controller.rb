@@ -18,11 +18,6 @@ class ApplicationController < Sinatra::Base
       @user = User.find_by_id(session[:user_id])
     end
 
-    def welcome 
-      @user = User.find_by_id(session[:user_name])
-      puts "Welcome #{@user}"
-    end
-
     def logged_in?
       !!session[:user_id]
     end
