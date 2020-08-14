@@ -37,7 +37,9 @@ class JerseyController < ApplicationController
             redirect '/login'
         else 
         @jersey = current_user.jerseys.find_by_id(params[:id])
-        erb :'/jerseys/show' 
+            if @jersey.save 
+            erb :'/jerseys/show' 
+            end 
         end 
     end
 
@@ -64,8 +66,7 @@ class JerseyController < ApplicationController
         @jersey = current_user.jerseys.find_by_id(params[:id])
         @jersey.update(params)
         redirect '/jerseys'
-        # redirect '/jerseys'
-    end
+    end 
 end
 
 

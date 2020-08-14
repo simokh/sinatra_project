@@ -6,18 +6,21 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        if params[:user_name] == "" || params[:password] == "" || params[:email] == "" || params[:confirm_password] == ""
-            redirect to '/signup'
+        @user = User.new(params) 
+        if @user.save
+            session[:user_id] = @user.id 
+            redirect '/jerseys'
         else 
-        user = User.create(params) 
-        session[:user_id] = user.id 
-        redirect '/jerseys'
+            @errors = @user.errors.full_messages
+            erb :'users/signup'
         end 
     end
 
-    get '/signup' do 
-        erb :'users/signup'
-    end
+
+
+    # get '/signup' do 
+    #     erb :'users/signup'
+    # end
 
     get '/login' do
         erb :'users/login'
@@ -29,11 +32,14 @@ class UsersController < ApplicationController
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
             redirect '/jerseys'
+            
         else 
-            @errors= "Invalid User Name or Passwrod"
-            erb :'users/login'
+            @errors = "Invalid Username or Password"
+            erb :'users/login' 
         end
     end
+
+    
 
     delete '/logout' do 
         logout!

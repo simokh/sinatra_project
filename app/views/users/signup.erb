@@ -3,13 +3,23 @@
 <form action="/signup" method="post">
     
     <label for="user_name"> Soccer Pseudo</label>
-    <input type="user_name" name="user_name" id="" value= "" required>
+    <input type="user_name" name="user_name" id="" value= "<%= @user && @user.user_name%>" >
 
     <label for="email">Email:</label>
-    <input type="email" name="email" id="" value= "" required>
+    <input type="email" name="email" id="" value= "" >
 
     <label for="password"> Password:</label>
-    <input type="password" name="password" id="" value="" required>
+    <input type="password" name="password" id="" value="">
 
         <input type="submit" value="Score">
 </form>
+
+<ol>
+<%if @errors%>
+    <%@errors.filter do |error|%>
+        <%if params[:user_name].empty? || params[:email].empty? || params[:password] %>
+        <p><%=error%></p>
+        <%end%>
+    <%end%>
+<%end %>
+<ol>
