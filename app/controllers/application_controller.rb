@@ -25,6 +25,10 @@ class ApplicationController < Sinatra::Base
     def logout!
       session.clear
     end
+
+    def jersey 
+      @jersey = current_user.jerseys.find_by_id(params[:id])
+    end
   end
 
 end

@@ -13,4 +13,25 @@
 </nav>
 
 
-<p><%=@jersey.club_name%></p>
+<p>Club Name ⚽️⚽️ <%=@jersey.club_name%>  </p>
+<p>🏟🏟</p>
+<p>Jersey Number ⚽️⚽️ <%=@jersey.number%>  </p>
+
+
+
+<ul> 
+<div class="btn-group">
+  <form action="/jerseys/<%= jersey.id %> " method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="RED CARD!!!">
+    </form>
+  
+  <a href= "/jerseys/<%= jersey.id %>/edit"> 
+    <button> 
+      Substitution
+    </button>
+  </a> 
+</div>
+</ul>
+
+

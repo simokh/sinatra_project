@@ -14,23 +14,25 @@
   </a>
 </nav>
 
-<% @jerseys.each do |jersey|%>
-<p> Club Name: <%= jersey.club_name%> |  Jersey Number: <%= jersey.number%></p>
 
-<div class="btn-group">
-  <form action="/jerseys/<%= jersey.id %> " method="post">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="RED CARD!!!">
-    </form>
+<%current_user.jerseys.each do |j|%>
+<p> <a href= "/jerseys/<%= j.id%>"> 
+ <button>
+  <%=j.club_name%>
+ </button>
+ </a> </p>
+<%end%>  
+
   
-  <a href= "/jerseys/<%= jersey.id %>/edit"> 
-    <button> 
-      Substitution
-    </button>
-  </a> 
-</div>
 
-<%end%>
+
+
+
+
+
+
+
+
 
 
 

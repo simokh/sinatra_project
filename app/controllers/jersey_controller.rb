@@ -9,6 +9,8 @@ class JerseyController < ApplicationController
         end 
     end
 
+    # "/jerseys/#{@jersey.id}"
+
     get '/jerseys/new' do # load the new.erb form
         if !logged_in?
             redirect '/login'
@@ -23,12 +25,14 @@ class JerseyController < ApplicationController
     post '/jerseys' do 
         
         if params[:club_name].empty? || params[:number].empty?
-            redirect '/jerseys/new'
-        else 
-        jersey = current_user.jerseys.build(params)
-        jersey.save
-        redirect "/jerseys/#{jersey.id}"
-        end 
+            redirect to '/jerseys/new'
+            @errors= "Club Name and/or Number Can't be Blank"
+        else
+            @jersey = current_user.jerseys.build(params)
+            @jersey.save
+            redirect to "/jerseys/#{@jersey.id}"
+
+        end
      end
 
     # the show page will display the new entry 
@@ -38,14 +42,14 @@ class JerseyController < ApplicationController
         else 
         @jersey = current_user.jerseys.find_by_id(params[:id])
             if @jersey.save 
-            erb :'/jerseys/show' 
-            end 
+            erb :'/jerseys/show'
+            end
         end 
     end
 
     delete '/jerseys/:id' do #delete action
         
-        jersey = current_user.jerseys.find_by_id(params[:id])
+        # jersey = current_user.jerseys.find_by_id(params[:id]) 
         jersey.destroy
         redirect '/jerseys'
     end
