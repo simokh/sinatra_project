@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20200816065410) do
   end
 
   create_table "leagues", force: :cascade do |t|
-    t.string "league_name"
-    t.string "league_country"
+    t.string  "league_name"
+    t.string  "league_country"
+    t.integer "jersey_id"
   end
 
   create_table "users", force: :cascade do |t|

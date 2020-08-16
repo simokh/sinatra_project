@@ -2,6 +2,8 @@
 <h2>Soccer Best Chompionships</h2>
 
 
+
+
 <form action="/jerseys" method='post'>
 
 <label for="club_name"> Club Name: </label>
@@ -23,6 +25,11 @@
 
 <p><%=@errors%></p>
 
+<nav>
+  <a href='/jerseys'>
+  <button> My Collection</button> 
+  </a>
+</nav>
 
 <a href="Logout">
   <form action="/logout" method="post">
