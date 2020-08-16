@@ -16,8 +16,11 @@
 
 
 <%current_user.jerseys.each do |j|%>
-<p> <a href= "/jerseys/<%= j.id%>"> <%=j.club_name%> </a> </p>
+<p> Club Name: <a href= "/jerseys/<%= j.id%>"> <%=j.club_name%> </a> </p>
 <%end%>  
+
+
+
 
 
 

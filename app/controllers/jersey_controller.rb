@@ -16,6 +16,7 @@ class JerseyController < ApplicationController
             redirect '/login'
         else 
         @leagues = League.all
+        # binding.pry
         erb :'jerseys/new'
         end 
     end
@@ -40,7 +41,8 @@ class JerseyController < ApplicationController
         if !logged_in?
             redirect '/login'
         else 
-        @jersey = current_user.jerseys.find_by_id(params[:id])
+        # @jersey = current_user.jerseys.find_by_id(params[:id])
+            jersey
             if @jersey.save 
             erb :'/jerseys/show'
             end
@@ -49,7 +51,7 @@ class JerseyController < ApplicationController
 
     delete '/jerseys/:id' do #delete action
         
-        # jersey = current_user.jerseys.find_by_id(params[:id]) 
+        
         jersey.destroy
         redirect '/jerseys'
     end
@@ -59,7 +61,8 @@ class JerseyController < ApplicationController
         if !logged_in?
             redirect '/login'
         else 
-        @jersey = current_user.jerseys.find_by_id(params[:id])
+        # @jersey = current_user.jerseys.find_by_id(params[:id])
+        jersey
         erb :'jerseys/edit'
         end 
     end
@@ -67,7 +70,8 @@ class JerseyController < ApplicationController
      
     patch '/jerseys/:id' do #edit action
         params.delete(:_method)
-        @jersey = current_user.jerseys.find_by_id(params[:id])
+        # @jersey = current_user.jerseys.find_by_id(params[:id])
+        jersey
         @jersey.update(params)
         redirect '/jerseys'
     end 
