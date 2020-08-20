@@ -1,4 +1,4 @@
-
+*Soccer Jersey Locker*
 
 
 Welcome to the Jersey Locker App. This application is a log of your favorite soccer jerseys. In this application, there are three tables that are created within the database to host information. The database contains the User, Jersey and the League tables. The tables are connecting via associations such as Has Many and Has Many Through. User has many jerseys and leagues, Jersey belongs to leagues and Users, league has many jerseys through users and user has many leagues through jerseys.  

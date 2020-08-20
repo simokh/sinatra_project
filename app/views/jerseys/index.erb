@@ -7,6 +7,15 @@
   </form>
 </a>
 </nav>
+<form action="/jerseys" method= "get">
+<label for="league_id"> Select League: </label>
+<select name='league_id'>
+<% @leagues.each do |league| %>
+<option value=<%= league.id %>><%= league.league_name %></option>
+<% end %>
+</select>
+<input type="submit" value= "Filter">
+</form>
 
 <nav>
   <a href='jerseys/new'> 
@@ -15,7 +24,7 @@
 </nav>
 
 
-<%current_user.jerseys.each do |j|%>
+<%@jerseys.each do |j|%>
 <p> Club Name: <a href= "/jerseys/<%= j.id%>"> <%=j.club_name%> </a> </p>
 <%end%>  
 

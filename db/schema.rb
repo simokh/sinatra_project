@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20200816065410) do
     t.string  "league_country"
     t.integer "jersey_id"
   end
-
+  
   create_table "users", force: :cascade do |t|
     t.string "user_name"
     t.string "email"
